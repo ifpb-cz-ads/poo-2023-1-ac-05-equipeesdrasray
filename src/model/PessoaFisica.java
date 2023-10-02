@@ -2,14 +2,14 @@ package model;
 
 import java.time.LocalDate;
 
-public class PessoaFisica extends Cliente{
+public class PessoaFisica extends Cliente {
 
     private String cpf;
     private String nome;
     private LocalDate nascimento;
 
-    public PessoaFisica(double limiteCredito, Endereco endereco, String cpf, String nome, LocalDate nascimento) {
-        super(limiteCredito, endereco);
+    public PessoaFisica(Endereco endereco, String cpf, String nome, LocalDate nascimento) {
+        super(endereco);
         this.cpf = cpf;
         this.nome = nome;
         this.nascimento = nascimento;

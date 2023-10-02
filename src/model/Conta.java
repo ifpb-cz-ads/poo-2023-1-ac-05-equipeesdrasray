@@ -4,9 +4,10 @@ import java.time.LocalDate;
 
 public abstract class Conta {
 
+    // dados da conta
     private int agencia;
     private int numero;
-    protected double saldo;
+    private double saldo;
     private LocalDate dataAbertura;
     private Cliente cliente;
 
@@ -18,14 +19,24 @@ public abstract class Conta {
         this.cliente = cliente;
     }
 
-    public boolean depositar(double valor){
-        //TODO: Verificar problemas no preenchimento
-        saldo += valor;
-        return true;
+    public boolean depositar(double valor) {
+        if (valor >= 0) {
+            saldo += valor;
+            return true;
+        }
+
+        return false;
+
     }
 
     public abstract boolean sacar(double valor);
 
+    protected boolean diminuirSaldo(double valor) {
+        this.saldo -= valor;
+        return true;
+    }
+
+    // getter e setters da conta
     public int getAgencia() {
         return agencia;
     }
@@ -46,10 +57,6 @@ public abstract class Conta {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
     public LocalDate getDataAbertura() {
         return dataAbertura;
     }
@@ -64,5 +71,13 @@ public abstract class Conta {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta Corrente" + "\n" +
+                "Agência: " + agencia + '\n' +
+                "Numero: " + numero + '\n' +
+                "Saldo: R$ " + saldo + '\n';
     }
 }

@@ -2,38 +2,51 @@ package view;
 
 import model.Cliente;
 import model.ContaCorrente;
+import model.ContaPoupanca;
 import model.Endereco;
 import model.PessoaFisica;
+import model.PessoaJuridica;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Main {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        Cliente cliente = new PessoaFisica(1000,
-                new Endereco("Rua A", 30, "Cajazeiras"),
-                "111.111.111-01", "João",
-                LocalDate.of(1990,1,1));
+                // criando os clientes
+                Cliente joao = new PessoaFisica(
+                                new Endereco("Santa Helena", 24, "Aparecida"),
+                                "000.000.000-00",
+                                "João da Silva",
+                                LocalDate.of(1990, 10, 8));
 
-        ContaCorrente contaCorrente = new ContaCorrente(1,1,
-                0, LocalDate.now(), cliente,20);
+                Cliente makipex = new PessoaJuridica(
+                                new Endereco("Augusto Moreira", 104, "Serra Grande"),
+                                "92.928.365/0001-07",
+                                "Makipex");
 
-        contaCorrente.depositar(500);
-        contaCorrente.sacar(600);
-        contaCorrente.aplicarTaxa();
-        contaCorrente.sacar(800);
+                // criando as contas
+                ContaCorrente contaJoao = new ContaCorrente(123, 794823, 1200, LocalDate.now(), joao, 1.5);
 
-        System.out.println(contaCorrente.getSaldo());
+                ContaPoupanca contaMakipex = new ContaPoupanca(321, 456843, 2349, LocalDate.now(), makipex, 10);
 
-//        //Para ajudar com as datas
-//        DateTimeFormatter formatter = DateTimeFormatter
-//                .ofPattern("dd/MM/yyyy");
-//        String string = "29/02/2000";
-//        //Ler
-//        LocalDate localDate = LocalDate.parse(string, formatter);
-//        //Escrever
-//        System.out.println(localDate.format(formatter));
+                // mostrandos os dados das contas
+                System.out.println("--- Conta joão ---\n" + contaJoao);
+                System.out.println("--- Conta Makipex ---\n" + contaMakipex);
 
-    }
+                System.out.println(">>>>>>>>>>> Efetuando operações...\n\n");
+
+                // realizando operações na conta de joao
+                contaJoao.depositar(300);
+                contaJoao.aplicarTaxa();
+                contaJoao.sacar(1700.0);
+                System.out.println("--- Conta joão ---");
+                System.out.println(contaJoao);
+
+                // realizando operações na conta da makipex
+                contaMakipex.depositar(400);
+                contaMakipex.renderJuros();
+                System.out.println("--- Conta Makipex ---");
+                System.out.println(contaMakipex);
+
+        }
 }

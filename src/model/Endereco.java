@@ -5,12 +5,14 @@ public class Endereco {
     private int numero;
     private String cidade;
 
+    // constructor
     public Endereco(String rua, int numero, String cidade) {
         this.rua = rua;
         this.numero = numero;
         this.cidade = cidade;
     }
 
+    // getters and setters
     public String getRua() {
         return rua;
     }

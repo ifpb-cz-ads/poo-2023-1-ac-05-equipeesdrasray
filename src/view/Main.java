@@ -39,12 +39,15 @@ public class Main {
                 contaJoao.depositar(300);
                 contaJoao.aplicarTaxa();
                 contaJoao.sacar(1700.0);
-                System.out.println("--- Conta joão ---");
-                System.out.println(contaJoao);
-
                 // realizando operações na conta da makipex
                 contaMakipex.depositar(400);
                 contaMakipex.renderJuros();
+                contaMakipex.transferir(contaJoao, 150.5f);
+
+                // imprimindo informações
+                System.out.println("--- Conta joão ---");
+                System.out.println(contaJoao);
+
                 System.out.println("--- Conta Makipex ---");
                 System.out.println(contaMakipex);
 

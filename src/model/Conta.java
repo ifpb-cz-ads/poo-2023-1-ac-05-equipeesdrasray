@@ -73,6 +73,17 @@ public abstract class Conta {
         this.cliente = cliente;
     }
 
+    public boolean transferir(Conta conta, float valor) {
+        if (saldo >= valor && valor > 0 && conta != this) {
+            conta.saldo += valor;
+            diminuirSaldo(valor);
+
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Conta Corrente" + "\n" +

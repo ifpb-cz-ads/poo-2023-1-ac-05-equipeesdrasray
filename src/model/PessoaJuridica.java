@@ -1,12 +1,12 @@
 package model;
 
-public class PessoaJuridica extends Cliente{
+public class PessoaJuridica extends Cliente {
 
     private String cnpj;
     private String razaoSocial;
 
-    public PessoaJuridica(double limiteCredito, Endereco endereco, String cnpj, String razaoSocial) {
-        super(limiteCredito, endereco);
+    public PessoaJuridica(Endereco endereco, String cnpj, String razaoSocial) {
+        super(endereco);
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
     }
